@@ -1,4 +1,5 @@
 import datetime
+import traceback
 from typing import Any, Dict
 
 import loguru
@@ -50,6 +51,7 @@ class AppPresenter:
             except ValueError:
                 # May be raised when hotkey can't be bound
                 self.show(keys.ErrorWindowKey(Exception(f'Unable to bind hotkey: {val}')))
+                traceback.print_exc()
 
     def _ocr_hotkey_pressed(self):
         self.screen_capture()

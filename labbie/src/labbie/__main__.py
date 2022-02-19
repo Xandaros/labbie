@@ -20,6 +20,7 @@ from labbie import utils
 from labbie.di import module
 from labbie.ui import utils as ui_utils
 from labbie.ui.app import presenter as app
+from labbie.ui.hotkey import HotkeyManager
 from labbie.ui.update import presenter as update
 from labbie.vendor.qtmodern import styles
 
@@ -77,6 +78,8 @@ def main():
     ui_utils.fix_taskbar_icon()
     icon_path = ui_utils.asset_path('taxi.png')
     app.setWindowIcon(QtGui.QIcon(str(icon_path)))
+
+    HotkeyManager.get_instance().start()
 
     loop = qasync.QSelectorEventLoop(app)
     asyncio.set_event_loop(loop)
